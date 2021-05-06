@@ -2,6 +2,7 @@ const path = require('path');
 const resolve = dir => path.resolve(__dirname, dir);
 
 export default {
+  target: 'static',
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
     title: 'dn_site',
@@ -34,24 +35,7 @@ export default {
   ],
   // router
   router: {
-    extendRoutes (routes, resolve) {
-      routes.push({
-        name: 'home',
-        path: '/index.html',
-        component: resolve(__dirname, 'pages/index.vue'),
-      },
-      {
-        name: 'product',
-        path: '/product.html',
-        component: resolve(__dirname, 'pages/product.vue'),
-      },
-      {
-        name: 'benefit',
-        path: '/benefit.html',
-        component: resolve(__dirname, 'pages/benefit.vue'),
-      }
-      );
-    },
+  
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -75,6 +59,19 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  },
-
+    ssr: true,
+    extractCSS: true,
+    optimization: {
+      splitChunks: {
+        cacheGroups: {
+          styles: {
+            name: 'styles',
+            test: /\.(css|vue)$/,
+            chunks: 'all',
+            enforce: true
+          }
+        }
+      }
+    }
+  }
 }
