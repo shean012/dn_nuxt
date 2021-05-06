@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { initFn } from '../../utils/public.js'
+
 export default {
   data() {
     return {
@@ -22,14 +24,19 @@ export default {
   },
   mounted() {
     let id = this.$route.params.contentId
-    window.hccms.api.GetNewsContent({}, id, 0, res => {
-      let { content, classtitle, title, ctime } = res
-      ;(this.contentData = content), (this.classtitle = classtitle)
-      this.title = title
-      this.ctime = ctime
-    })
+    if (id) {
+      initFn(this, this.getContentDetail, id)
+    }
   },
   methods: {
+    getContentDetail(id) {
+      window.hccms.api.GetNewsContent({}, id, 0, res => {
+        let { content, classtitle, title, ctime } = res
+        ;(this.contentData = content), (this.classtitle = classtitle)
+        this.title = title
+        this.ctime = ctime
+      })
+    },
     formatDate(time) {
       if (!time) return ''
       let date = new Date(time).toISOString()

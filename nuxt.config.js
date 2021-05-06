@@ -35,19 +35,22 @@ export default {
   // router
   router: {
     extendRoutes (routes, resolve) {
-      const routers = [{
+      routes.push({
+        name: 'home',
         path: '/index.html',
         component: resolve(__dirname, 'pages/index.vue'),
       },
       {
+        name: 'product',
         path: '/product.html',
         component: resolve(__dirname, 'pages/product.vue'),
       },
       {
+        name: 'benefit',
         path: '/benefit.html',
         component: resolve(__dirname, 'pages/benefit.vue'),
-      }]
-      routes.push(...routers);
+      }
+      );
     },
   },
 

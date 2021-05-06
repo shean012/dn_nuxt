@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { initFn } from '~/utils/public.js'
+
 export default {
   data() {
     return {
@@ -41,21 +43,7 @@ export default {
   },
   mounted() {
     let _this = this
-    if (window.hasInit) this.getColumnInfo()
-    else {
-      window.hccms.init.auth(
-        {
-          deptid: 0,
-          activityid: 0,
-          scenetype: 1,
-          actiontype: 0
-        },
-        function(e) {
-          window.hasInit = true
-          _this.getColumnInfo()
-        }
-      )
-    }
+    initFn(this, this.getColumnInfo)
   },
   methods: {
     getColumnInfo() {

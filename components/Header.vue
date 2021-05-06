@@ -34,11 +34,11 @@
         <div class="w70">
           <NuxtLink to="/">首页</NuxtLink>
           <NuxtLink to="/product">产品中心</NuxtLink>
-          <NuxtLink to="/team">投研团队</NuxtLink>
+          <!-- <NuxtLink to="/team">投研团队</NuxtLink> -->
           <NuxtLink to="/education">投资者教育</NuxtLink>
           <NuxtLink to="/benefit">公益教育</NuxtLink>
-          <NuxtLink to="/service">用户服务</NuxtLink>
-          <NuxtLink to="/about">关于我们</NuxtLink>
+          <!-- <NuxtLink to="/service">用户服务</NuxtLink>
+          <NuxtLink to="/about">关于我们</NuxtLink> -->
         </div>
       </div>
     </div>
